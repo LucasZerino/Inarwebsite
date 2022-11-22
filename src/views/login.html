@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/login/style.css" />
+    <title>Inar Blog | Login e Registro</title>
+    <link rel="icon" href="./img/favico.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form method="post" class="sign-in-form">
+            <h2 class="title">INAR</h2>
+            <h3 class="subtit">Faça login para postar no blog!</h3>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Email" name="email" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Senha" name="password" />
+            </div>
+            <input type="submit" value="Login" class="btn solid" />
+          </form>
+          <form class="sign-up-form">
+            <h2 class="title">Cadastro</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input onchange="setNome()" id="nome" type="text" placeholder="Nome" />
+            </div>
+            <h1 class="errmsg" id="errnome">Você precisa cadastrar um nome!</h1>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input onchange="setEmail()" id="email" type="email" placeholder="Email" />
+            </div>
+            <h1 class="errmsg" id="errmail">Você precisa cadastrar um email válido!</h1>
+            <h1 class="errmsg" id="errmail2">Esse email já está cadastrado!</h1>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input onchange="setPass()" id="password" type="password" placeholder="Password" />
+            </div>
+            <h1 class="errmsg" id="errpass">Sua senha precisa ter mais de 6 dígitos!</h1>
+            <div class="input-field">
+                <i class="fas fa-lock"></i>
+                <input onchange="setCod()" id="codigo" type="password" placeholder="Código de Registro" />
+              </div>
+            <button onclick="cadastrar()" class="btn">Cadastrar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Novo aqui ?</h3>
+            <p>
+              Faça o registro para poder postar no blog!
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Registrar-se
+            </button>
+          </div>
+          <img src="img/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Já é cadastrado ?</h3>
+            <p>
+              Clique aqui e faça login para postar!
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Fazer Login
+            </button>
+          </div>
+          <img src="img/register.svg" class="image" alt="" />
+        </div>
+      </div>
+    </div>
+    <div id="codigoerr" class="errors">
+        <p>Código de registro inválido!</p>
+    </div>
+    <div id="codigoerr2" class="errors2">
+        <p>Conta criada com sucesso!</p>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+    
+        function setNome(){
+            nome = document.getElementById('nome').value;
+        }
+
+        function setEmail(){
+            email = document.getElementById('email').value;
+        }
+
+        function setPass(){
+            password = document.getElementById('password').value;
+        }
+        
+        function setCod(){
+            codigo = document.getElementById('codigo').value;
+        }
+
+        function cadastrar(){
+            if(codigo != 'inar@blog#2022'){
+                var div = document.getElementById("codigoerr");
+                div.style.display = "block";
+                setTimeout(() => {
+                    div.style.display = "none";
+                }, "5000")
+                }else{
+                    var myHeaders = new Headers();
+                    myHeaders.append("Content-Type", "application/json");
+
+                    var raw = JSON.stringify({
+                    "name": nome,
+                    "email": email,
+                    "password": password
+                    });
+
+                    var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                    };
+
+                    let resposta;
+
+                    fetch("http://localhost:3001/user", requestOptions)
+                    .then(response => response.text())
+                    .then(result => {
+                      console.log(result);
+                      resposta = JSON.parse(result);
+                      respostaErr = resposta?.message;
+                      respostaErr2 = resposta?.code;
+                      console.log(resposta);
+                      console.log(respostaErr)
+                      if(respostaErr === 'password must be a `string` type, but the final value was: `{}`.' || respostaErr === 'password must be at least 6 characters'){
+                        console.log("Erro de senha!")
+                        var div = document.getElementById("errpass");
+                        div.style.display = "block";
+                        setTimeout(() => {
+                            div.style.display = "none";
+                        }, "5000")
+                      }
+                      if(respostaErr === 'email must be a `string` type, but the final value was: `{}`.' || respostaErr === 'email must be a valid email'){
+                        console.log("Erro de email!")
+                        var div = document.getElementById("errmail");
+                        div.style.display = "block";
+                        setTimeout(() => {
+                            div.style.display = "none";
+                        }, "5000")
+                      }
+                      if(respostaErr === 'name is a required field' || respostaErr === 'email must be a valid email'){
+                        console.log("Erro de Nome!")
+                        var div = document.getElementById("errnome");
+                        div.style.display = "block";
+                        setTimeout(() => {
+                            div.style.display = "none";
+                        }, "5000")
+                      }
+                      if(respostaErr2 === 'P2002'){
+                        console.log("Email já cadastrado!")
+                        var div = document.getElementById("errmail2");
+                        div.style.display = "block";
+                        setTimeout(() => {
+                            div.style.display = "none";
+                        }, "5000")
+                      }
+                      if(respostaErr === null || respostaErr === undefined && respostaErr2 != 'P2002'){
+                        console.log("Conta criada com sucesso!")
+                        var div = document.getElementById("codigoerr2");
+                        div.style.display = "block";
+                        setTimeout(() => {
+                            div.style.display = "none";
+                        }, "5000")
+                      }
+                    })
+                    .catch(error => console.log('error', error, "esse é o erro!"));
+
+                }
+            }
+       
+    </script>
+  </body>
+</html>
