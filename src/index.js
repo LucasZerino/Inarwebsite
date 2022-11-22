@@ -85,6 +85,14 @@ app.get('/login', (req, res) => {
     }
 })
 
+app.get("/userconfig", (req, res) => {
+    res.render('user')
+})
+
+app.post("/userconfig", (req, res) => {
+    res.render('user')
+})
+
 
 
 app.use(cors());
