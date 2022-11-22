@@ -50,7 +50,7 @@
                 <i class="fas fa-lock"></i>
                 <input onchange="setCod()" id="codigo" type="password" placeholder="Código de Registro" />
               </div>
-            <button onclick="cadastrar()" class="btn">Cadastrar</button>
+            <div onclick="cadastrar()" class="btn divbtn">Cadastrar</button>
           </form>
         </div>
       </div>
@@ -143,7 +143,7 @@
                       respostaErr2 = resposta?.code;
                       console.log(resposta);
                       console.log(respostaErr)
-                      if(respostaErr === 'password must be a `string` type, but the final value was: `{}`.' || respostaErr === 'password must be at least 6 characters'){
+                      if(respostaErr === 'password must be a `string` type, but the final value was: `{}`.' || respostaErr === 'password must be at least 6 characters' || respostaErr === 'password is a required field'){
                         console.log("Erro de senha!")
                         var div = document.getElementById("errpass");
                         div.style.display = "block";
@@ -159,7 +159,7 @@
                             div.style.display = "none";
                         }, "5000")
                       }
-                      if(respostaErr === 'name is a required field' || respostaErr === 'email must be a valid email'){
+                      if(respostaErr === 'name is a required field' || respostaErr === 'name must be a `string` type, but the final value was: `{}`.'){
                         console.log("Erro de Nome!")
                         var div = document.getElementById("errnome");
                         div.style.display = "block";

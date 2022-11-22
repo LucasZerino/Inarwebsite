@@ -22,6 +22,7 @@ app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
 app.use('/img', express.static(__dirname + 'public/img'));
 app.use('/fonts', express.static(__dirname + 'public/fonts'));
+app.use('/libs', express.static(__dirname + 'public/libs'))
 app.set("views", path.join(__dirname, "views"));
 
 
@@ -49,11 +50,19 @@ app.post('/login', (req, res) => {
                 email: req.body.email,
             }
         });
-        var id = user.id;
-        if(!user) return null
+        if(!user){
+            res.render('login');
+            return null;
+        }
+        if(user == undefined){
+            res.render('login');
+            return null;
+        }
+        
 
         if(req.body.password == user.password){
             console.log("senhas iguais!")
+            var id = user.id;
             req.session.login = id;
             console.log(req.session.login);
             res.render('postblog')
