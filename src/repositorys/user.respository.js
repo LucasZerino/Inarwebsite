@@ -32,12 +32,6 @@ export const getUniqueUser = async ( id ) => {
         where: {
             id,
         },
-        select: {
-            id: true,
-            name: true,
-            email: true,
-            password: false,
-        }
     });
     return user;
 }

@@ -19,10 +19,19 @@ export const getAllPosts = async () => {
 export const getPostByUser = async ( id ) => {
     const posts = await prisma.post.findMany({
         where: {
-            userId: id,
+            authorId: id,
         }
     })
     return posts;
+}
+
+export const getUniquePost = async ( id ) => {
+    const post = await prisma.post.findUnique({
+        where: {
+            id,
+        },
+    });
+    return post;
 }
 
 export const updatePost = async ( id, data ) => {

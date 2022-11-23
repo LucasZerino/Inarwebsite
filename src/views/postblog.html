@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Landrick - Blog</title>
+        <title>Inar - Blog</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Premium Bootstrap 5 Admin Dashboard Template" />
         <meta name="keywords" content="Saas, CRM, Admin, Dashboard, Modern, Classic" />
@@ -13,7 +13,7 @@
         <meta name="website" content="https://shreethemes.in" />
         <meta name="Version" content="v3.8.0" />
         <!-- favicon -->
-        <link rel="shortcut icon" href="/img/dash/favicon.ico">
+        <link rel="icon" href="./img/favico.ico" type="image/x-icon" />
         <!-- Bootstrap -->
         <link href="/css/dash/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- simplebar -->
@@ -24,10 +24,10 @@
         <link href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"  rel="stylesheet">
         <!-- Css -->
         <link href="/css/dash/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
-
+        <link href="/css/dash/edit.css" rel="stylesheet" type="text/css" />
     </head>
 
-    <body>
+    <body id="bodyrmv">
         <!-- Loader -->
         <!-- <div id="preloader">
             <div id="status">
@@ -54,12 +54,12 @@
                     
                     <ul class="sidebar-menu">
                         <li class="sidebar-dropdown">
-                            <a href="javascript:void(0)"><i class="ti ti-user me-2"></i>Usuário</a>
+                            <button id="botao1" class="a" onclick='exibirUser()'><i class="ti ti-user me-2"></i>Usuário</button>
                             <div class="sidebar-submenu">
                             </div>
                         </li>
                         <li class="sidebar-dropdown">
-                            <a href="javascript:void(0)"><i class="ti ti-brand-gravatar me-2"></i>Blog</a>
+                            <button id="botao2" class="a ativo" onclick="exibirBlog()"><i class="ti ti-brand-gravatar me-2"></i>Blog</button>
                         </li>
                     </ul>
                     <!-- sidebar-menu  -->
@@ -92,25 +92,30 @@
 
                             <li class="list-inline-item mb-0 ms-1">
                                 <div class="dropdown dropdown-primary">
-                                    <button type="button" class="btn btn-soft-light dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/img/dash/client/05.jpg" class="avatar avatar-ex-small rounded" alt=""></button>
+                                    <button type="button" class="btn btn-soft-light dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="/img/dash/client/05.png" class="avatar avatar-ex-small rounded" alt=""></button>
                                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px;">
-                                        <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="profile.html">
-                                            <img src="/img/dash/client/05.jpg" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
+                                        <div class="dropdown-item d-flex mouse align-items-center text-dark pb-3" onclick="exibirUser()">
+                                            <img src="/img/dash/client/05.png" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
                                             <div class="flex-1 ms-2">
-                                                <span class="d-block">Cristina Julia</span>
-                                                <small class="text-muted">UI / UX Designer</small>
+                                                <span class="d-block" id="nameuser"></span>
                                             </div>
-                                        </a>
-                                        <a class="dropdown-item text-dark" href="profile.html"><span class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span> Perfil</a>
-                                        <a class="dropdown-item text-dark" href="login.html"><span class="mb-0 d-inline-block me-1"><i class="ti ti-logout"></i></span> Sair</a>
+                                        </div>
+                                        <button class="dropdown-item text-dark" onclick="exibirUser()"><span class="mb-0 d-inline-block me-1"><i class="ti ti-settings"></i></span> Perfil</button>
+                                        <form class="sair" method="post">
+                                            <input type="hidden" placeholder="Email" name="sair" value="sair" />
+                                            <div class="alinha">
+                                                <i class="ti ti-logout"></i> <input type="submit" value="Sair" class="btn solid btnsair" />
+                                            </div>
+                                          </form>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
+                    <div class="id" id="iduser"> <%=id%></div>
                 </div>
 
-                <div class="container-fluid">
+                <div class="container-fluid" id="main1">
                     <div class="layout-specing">
                         <div class="d-md-flex justify-content-between">
                             <div>
@@ -129,190 +134,133 @@
                             </div>
                         </div>
                     
+                        <div class="row myContent">
+                           
+                        </div><!--end row-->
+                    </div>
+                </div><!--end container-->
+
+                <div class="container-fluid" id="main2">
+                    <div class="layout-specing">
+                        <div class="d-md-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Configurações de Usuário</h5>
+                        </div>
                         <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
-                                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
-                                    <div class="position-relative">
-                                        <img src="/img/dash/blog/01.jpg" class="card-img-top" alt="...">
-                                        <div class="overlay rounded-top"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="javascript:void(0)" class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a></li>
-                                            </ul>
-                                            <a href="blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
+                            <div class="col-lg-6 mt-4">
+                                <div class="card border-0 rounded shadow">
+                                    <div class="card-body">
+                                        <h5 class="text-md-start text-center mb-0">Detalhes do perfil :</h5>
+        
+                                        <div class="mt-4 text-md-start text-center d-sm-flex">
+                                            <img src="/img/dash/client/05.png" class="avatar float-md-left avatar-medium rounded-circle shadow me-md-4" alt="">
+                                            
+                                            <div class="mt-md-4 mt-3 mt-sm-0">
+                                                <a href="javascript:void(0)" class="btn btn-primary mt-2">Mudar foto</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
+        
+                                        <form>
+                                            <div class="row mt-4">
+                                                <div class="col-md-12">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Nome</label>
+                                                        <div class="form-icon position-relative">
+                                                            <i data-feather="user" class="fea icon-sm icons"></i>
+                                                            <input name="name" id="first" type="text" class="form-control ps-5" placeholder="Nome completo :">
+                                                        </div>
+                                                    </div>
+                                                </div><!--end col-->
+                                            </div><!--end row-->
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <input type="submit" id="submit" name="send" class="btn btn-primary" value="Salvar alterações">
+                                                </div><!--end col-->
+                                            </div><!--end row-->
+                                        </form><!--end form-->
                                     </div>
                                 </div>
                             </div><!--end col-->
+
+                            <div class="col-lg-6 mt-4">
+                                <div class="card border-0 rounded shadow p-4">
+                                    <h5 class="mb-0">Alterar Senha :</h5>
+                                    <form>
+                                        <div class="row mt-4">
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Senha atual :</label>
+                                                    <div class="form-icon position-relative">
+                                                        <i data-feather="key" class="fea icon-sm icons"></i>
+                                                        <input type="password" class="form-control ps-5" placeholder="Senha atual" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-->
+        
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Nova senha :</label>
+                                                    <div class="form-icon position-relative">
+                                                        <i data-feather="key" class="fea icon-sm icons"></i>
+                                                        <input type="password" class="form-control ps-5" placeholder="Nova senha" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-->
+        
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Confirmar nova senha :</label>
+                                                    <div class="form-icon position-relative">
+                                                        <i data-feather="key" class="fea icon-sm icons"></i>
+                                                        <input type="password" class="form-control ps-5" placeholder="Confirme a nova senha" required="">
+                                                    </div>
+                                                </div>
+                                            </div><!--end col-->
+        
+                                            <div class="col-lg-12 mt-2 mb-0">
+                                                <button class="btn btn-primary">Salvar senha</button>
+                                            </div><!--end col-->
+                                        </div><!--end row-->
+                                    </form>
+                                </div>
+                            </div><!--end col-->
+
+                            <div class="layout-specing">
+                                <div class="d-md-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Meus Posts</h5>
+                                </div>
+        
+                                <div class="row">
+                                    <div class="col-12 mt-4">
+                                        <div class="table-responsive shadow rounded">
+                                            <table class="table table-center bg-white mb-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="border-bottom p-3">Id</th>
+                                                        <th class="text-center border-bottom p-3" style="min-width: 200px;">Dt de criação</th>
+                                                        <th class="text-center border-bottom p-3">Dt de modificação</th>
+                                                        <th class="text-end border-bottom p-3" style="min-width: 200px;"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Start -->
+                                                    <tr>
+                                                        <th class="p-3">#d01</th>
+                                                        <td class="text-center p-3">01/01/2021</td>
+                                                        <td class="text-center p-3">01/01/2021</td>
+                                                        <td class="text-end p-3">
+                                                            <div href="invoice.html" class="btn btn-sm btn-primary">editar</div>
+                                                            <div href="#" class="btn btn-sm btn-soft-primary ms-2">excluir</div>
+                                                        </td>
+                                                    </tr>
+                                                    <!-- End -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><!--end col-->
+                                </div><!--end row-->
+                            </div>
+
                             
-                            <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
-                                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
-                                    <div class="position-relative">
-                                        <img src="/img/dash/blog/02.jpg" class="card-img-top" alt="...">
-                                        <div class="overlay rounded-top"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="javascript:void(0)" class="card-title title text-dark">How apps is changing the IT world</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a></li>
-                                            </ul>
-                                            <a href="blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            
-                            <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
-                                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
-                                    <div class="position-relative">
-                                        <img src="/img/dash/blog/03.jpg" class="card-img-top" alt="...">
-                                        <div class="overlay rounded-top"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="javascript:void(0)" class="card-title title text-dark">Smartest Applications for Business</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a></li>
-                                            </ul>
-                                            <a href="blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            
-                            <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
-                                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
-                                    <div class="position-relative">
-                                        <img src="/img/dash/blog/04.jpg" class="card-img-top" alt="...">
-                                        <div class="overlay rounded-top"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="javascript:void(0)" class="card-title title text-dark">How apps is changing the IT world</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a></li>
-                                            </ul>
-                                            <a href="blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            
-                            <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
-                                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
-                                    <div class="position-relative">
-                                        <img src="/img/dash/blog/05.jpg" class="card-img-top" alt="...">
-                                        <div class="overlay rounded-top"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="javascript:void(0)" class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a></li>
-                                            </ul>
-                                            <a href="blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            
-                            <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
-                                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
-                                    <div class="position-relative">
-                                        <img src="/img/dash/blog/06.jpg" class="card-img-top" alt="...">
-                                        <div class="overlay rounded-top"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="javascript:void(0)" class="card-title title text-dark">Smartest Applications for Business</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a></li>
-                                            </ul>
-                                            <a href="blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            
-                            <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
-                                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
-                                    <div class="position-relative">
-                                        <img src="/img/dash/blog/07.jpg" class="card-img-top" alt="...">
-                                        <div class="overlay rounded-top"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="javascript:void(0)" class="card-title title text-dark">Design your apps in your own way</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a></li>
-                                            </ul>
-                                            <a href="blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
-                            
-                            <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
-                                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
-                                    <div class="position-relative">
-                                        <img src="/img/dash/blog/08.jpg" class="card-img-top" alt="...">
-                                        <div class="overlay rounded-top"></div>
-                                    </div>
-                                    <div class="card-body content">
-                                        <h5><a href="javascript:void(0)" class="card-title title text-dark">Smartest Applications for Business</a></h5>
-                                        <div class="post-meta d-flex justify-content-between mt-3">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)" class="text-muted like"><i class="uil uil-heart me-1"></i>33</a></li>
-                                                <li class="list-inline-item"><a href="javascript:void(0)" class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a></li>
-                                            </ul>
-                                            <a href="blog-detail.html" class="text-muted readmore">Read More <i class="uil uil-angle-right-b align-middle"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="author">
-                                        <small class="text-light user d-block"><i class="uil uil-user"></i> Calvin Carlo</small>
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i> 25th June 2021</small>
-                                    </div>
-                                </div>
-                            </div><!--end col-->
                         </div><!--end row-->
                     </div>
                 </div><!--end container-->
@@ -331,7 +279,6 @@
                 </footer><!--end footer-->
                 <!-- End -->
             </main>
-            <!--End page-content" -->
         </div>
         <!-- page-wrapper -->
 
@@ -348,10 +295,10 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="d-grid">
-                                    <p class="text-muted">Upload your blog image here, Please click "Upload Image" Button.</p>
+                                    <p class="text-muted">Carregue a capa do blog aqui!.</p>
                                     <div class="preview-box d-block justify-content-center rounded shadow overflow-hidden bg-light p-1"></div>
-                                    <input type="file" id="input-file" name="input-file" accept="image/*" onchange={handleChange()} hidden />
-                                    <label class="btn-upload btn btn-primary mt-4" for="input-file">Upload Image</label>
+                                    <div id="apresentar-imagem" class="imagemrecebida"></div>
+                                    <input type="file" id="postimg" onchange="converterImagem()" />
                                 </div>
                             </div><!--end col-->
 
@@ -361,47 +308,19 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Blog Title <span class="text-danger">*</span></label>
-                                                    <input name="name" id="name" type="text" class="form-control" placeholder="Title :">
+                                                    <label class="form-label">Título do post <span class="text-danger">*</span></label>
+                                                    <input onchange="setTitulo()" name="name" id="titulo" type="text" class="form-control" placeholder="Title :">
                                                 </div>
                                             </div><!--end col-->
-    
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label"> Date : </label>
-                                                    <input name="date" type="text" class="form-control" id="date" value="09 January 2021">
-                                                </div>
-                                            </div><!--end col-->
-    
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label"> Time to read : </label>
-                                                    <input name="time" type="text" class="form-control" id="time" value="5 min read">
-                                                </div>
-                                            </div><!--end col-->
-    
-                                            <div class="col-md-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Tag</label>
-                                                    <select class="form-control">
-                                                        <option value="BU">Business</option>
-                                                        <option value="AG">Agency</option>
-                                                        <option value="FA">Fashion</option>
-                                                        <option value="SE">Selling</option>
-                                                        <option value="FI">Finance</option>
-                                                    </select>
-                                                </div>
-                                            </div><!--end col-->
-    
                                             <div class="col-lg-12">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Description <span class="text-danger">*</span></label>
-                                                    <textarea name="comments" id="comments" rows="4" class="form-control" placeholder="Blog description :"></textarea>
+                                                    <label class="form-label">Conteúdo <span class="text-danger">*</span></label>
+                                                    <textarea onchange="setConteudo()" name="comments" id="conteudo" rows="4" class="form-control"></textarea>
                                                 </div>
                                             </div><!--end col-->
     
                                             <div class="col-lg-12 text-end">
-                                                <button type="submit" class="btn btn-primary">Add Blog</button>
+                                                <div onclick="criarpost()" class="btn btn-primary" data-bs-dismiss="modal" >Postar</div>
                                             </div><!--end col-->
                                         </div>
                                     </form>
@@ -458,7 +377,160 @@
             </div>
         </div>
         <!-- Offcanvas End -->
-        
+
+
+        <script>
+
+async function getPosts() {
+                let response = await fetch("http://localhost:3334/post");
+                data = await response.json();
+                posts = data;
+
+                //para cada post criar um post
+                const myContent = document.querySelector(".myContent")
+
+                const showInHtml = posts.map((project, index) => {
+                    return `
+                    <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+                                <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
+                                    <div class="position-relative">
+                                        <img src=${project.image} class="card-img-top imagempost" alt="...">
+                                        <div class="overlay rounded-top"></div>
+                                    </div>
+                                    <div class="card-body content">
+                                        <h5><a class="card-title title text-dark">${project?.title}</a></h5>
+                                    </div>
+                                    <div class="author">
+                                        <small class="text-light user d-block"><i class="uil uil-user"></i> ${project?.author}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            `
+                })
+
+                myContent.innerHTML = showInHtml
+                return data;
+            }
+
+
+            function setTitulo(){
+                        titulo = document.getElementById('titulo').value;
+                    }
+
+            function setConteudo(){
+                        conteudo = document.getElementById('conteudo').value;
+                    }       
+
+            let idusuario = document.getElementById("iduser").outerText;
+
+            var myHeaders = new Headers();
+            myHeaders.append("Cookie", "connect.sid=s%3AheVceINIG16mIdY3TsjJDx08YljROVIa.mFkTx7jlwah%2BTttHWOS4MkjCYwvzD3F1hoYk39wsnOU");
+
+            var requestOptions = {
+            method: 'GET',
+            headers: myHeaders,
+            redirect: 'follow'
+            };
+
+
+            let userdados;
+            let nameuser
+            let emailuser;
+            let passuser;
+
+            getDatos();
+            getPosts();
+            async function getDatos() {
+                let response = await fetch("http://localhost:3334/user/"+idusuario, requestOptions);
+                let data = await response.json();
+                nameuser = data?.name;
+                emailuser = data?.email;
+                passuser = data?.password;
+
+                document.getElementById("nameuser").innerHTML = nameuser;
+                return data;
+            }
+
+           
+
+            let imagemBase64;
+
+            function converterImagem(){
+                var receberArquivo = document.getElementById("postimg").files;
+
+                if(receberArquivo.length>0){
+                    var carregarImagem = receberArquivo[0];
+
+                    var lerArquivo = new FileReader();
+
+                    lerArquivo.onload = function(arquivoCarregado){
+                    imagemBase64 = arquivoCarregado.target.result;       
+                       
+                    }
+                    lerArquivo.readAsDataURL(carregarImagem);
+                }
+            }
+
+            function criarpost(){
+                const element = document.getElementById('newblogadd')
+                element.classList.remove('show');
+                element.style.display = "none";
+                element.removeAttribute('role');
+                const element2 = document.getElementById('bodyrmv')
+                element2.classList.remove("modal-open");
+                element.style.overflow = "auto";
+            
+                setTimeout(() => {
+                            console.log("tentei pegar os posts!")
+                            getPosts();
+                        }, "2000")
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                myHeaders.append("Cookie", "connect.sid=s%3AlbeclBJ8ODed7KtDVEsGNowrxwLYno4j.pJV%2Bu1H0IEliKqa49VuGOuQ1UvJXwyXkrncI0sodFro");
+
+                        var raw = JSON.stringify({
+                        "title": titulo,
+                        "content": conteudo,
+                        "authorId": Number(idusuario),
+                        "author": nameuser,
+                        "image": imagemBase64
+                        });
+
+                        var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: raw,
+                        redirect: 'follow'
+                        };
+
+                        fetch("http://localhost:3334/post", requestOptions)
+                        .then(response => response.text())
+                        .then(result => console.log(result))
+                        .catch(error => console.log('error', error));
+                            }
+        </script>
+
+        <script>
+            //Mostrar tela
+                function exibirBlog(){
+                var div2 = document.getElementById("main2");
+                div2.style.display = "none";
+                document.getElementById("botao1").classList.remove("ativo");
+                var div = document.getElementById("main1");
+                div.style.display = "block";
+                document.getElementById("botao2").classList.add("ativo");
+                }
+
+                function exibirUser(){
+                var div = document.getElementById("main1");
+                div.style.display = "none";
+                document.getElementById("botao2").classList.remove("ativo");
+                var div2 = document.getElementById("main2");
+                div2.style.display = "block";
+                document.getElementById("botao1").classList.add("ativo");
+                }
+
+        </script>
         <!-- javascript -->
         <script src="/js/dash/bootstrap.bundle.min.js"></script>
         <!-- simplebar -->

@@ -1,0 +1,44 @@
+.ativo{
+    background-color: #f5f5f5a8 !important;
+}
+
+.sair{
+    align-self: center;
+    justify-self: center;
+}
+
+.alinha{
+    display: flex;
+    align-items: center;
+    margin-left: 18px;
+}
+.alinha:hover{
+    color: blue;
+}
+
+.alinha:hover .btnsair{
+    color: blue;
+}
+
+.btnsair{
+    margin-left: -15px;
+    font-weight: 300;
+}
+
+.id{
+    display: none;
+}
+
+.mouse{
+    cursor: pointer;
+}
+
+.imagempost{
+    max-width: 200px;
+    align-self: center;
+    justify-self: center;
+}
+
+.addblog{
+    display: block !important;
+}

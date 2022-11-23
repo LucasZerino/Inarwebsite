@@ -1,5 +1,5 @@
 import { postValidation } from "../validations/post.validation";
-import { createPost, getAllPosts, getPostByUser, updatePost, deletePost } from "../repositorys/post.respository";
+import { createPost, getAllPosts, getPostByUser, updatePost, deletePost, getUniquePost } from "../repositorys/post.respository";
 
 
 export const createpost = async ( req, res ) => {
@@ -12,37 +12,46 @@ export const createpost = async ( req, res ) => {
     }
 };
 
-export const getusers = async ( req, res ) => {
+export const getpost = async ( req, res ) => {
     try{
-        const users = await getAllUsers();
-        res.status( 200 ).send( users );
+        const posts = await getAllPosts();
+        res.status( 200 ).send( posts );
     }catch (e){
         res.status(400).send(e);
     }	
 }
 
-export const getuserById = async ( req, res ) => {
+export const getpostUser = async ( req, res ) => {
     try{
-        const user = await getUniqueUser( Number(req.params.id) );
-        res.status( 200 ).send( user );
+        const post = await getPostByUser( Number(req.params.id) );
+        res.status( 200 ).send( post );
     }catch (e){
         res.status(400).send(e);
     }
 }
 
-export const updateUsr = async (req, res) => {
+export const getPostById = async ( req, res ) => {
+    try{
+        const post = await getUniquePost( Number(req.params.id) );
+        res.status( 200 ).send( post );
+    }catch (e){
+        res.status(400).send(e);
+    }
+}
+
+export const updatePost = async (req, res) => {
     try {
-        const user = await updateUser(Number(req.params.id), req.body);
-        res.status(200).send(user);
+        const post = await updatePost(Number(req.params.id), req.body);
+        res.status(200).send(post);
     } catch (e) {
         res.status(400).send(e);
     }
 }
 
-export const removeUsr = async (req, res) => {
+export const removePost = async (req, res) => {
     try {
-        await deleteUser(Number(req.params.id));
-        res.status(200).send({ message: "Usuário deletado" });
+        await deletePost(Number(req.params.id));
+        res.status(200).send({ message: "Post deletado" });
     } catch (e) {
         res.status(400).send(e);
     }

@@ -22,7 +22,6 @@ app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
 app.use('/img', express.static(__dirname + 'public/img'));
 app.use('/fonts', express.static(__dirname + 'public/fonts'));
-app.use('/libs', express.static(__dirname + 'public/libs'))
 app.set("views", path.join(__dirname, "views"));
 
 
@@ -41,7 +40,7 @@ app.post('/login', (req, res) => {
     console.log(req.body.sair);
     if(req.body.sair == 'sair'){
         req.session.destroy();
-        res.redirect('/login');
+        res.redirect('login')
     }
 
     async function login(){
@@ -65,7 +64,7 @@ app.post('/login', (req, res) => {
             var id = user.id;
             req.session.login = id;
             console.log(req.session.login);
-            res.render('postblog')
+            res.render('postblog',  {id: id});
         }else{
             console.log("senhas diferentes!")
             res.render('login');
@@ -79,7 +78,8 @@ app.post('/login', (req, res) => {
 
 app.get('/login', (req, res) => {
     if(req.session.login){  
-        res.render('postblog')
+        var id = req.session.login;
+        res.render('postblog',  {id: id});
     }else{
         res.render('login');
     }
@@ -99,5 +99,5 @@ app.use(cors());
 app.use(express.json());
 routes(app);
 
-app.listen(3001);
-console.log("Server on port", 3001);
+app.listen(3334);
+console.log("Server on port", 3334);
