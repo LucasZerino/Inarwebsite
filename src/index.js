@@ -12,6 +12,9 @@ import { compare } from 'bcrypt';
 dotenv.config()
 const app = express();
 app.use(cors());
+app.use(express.json());
+routes(app);
+
 app.use(session({secret: 'inarcd91921asd'}))
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -29,15 +32,18 @@ app.set("views", path.join(__dirname, "views"));
 
 
 app.get('/', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.render('index');
 })
 
 app.get('/blog', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.render('blog');
 })
 
 
 app.post('/login', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     if(req.body.sair == 'sair'){
         req.session.destroy();
         res.redirect('login')
@@ -74,6 +80,7 @@ app.post('/login', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     if(req.session.login){  
         var id = req.session.login;
         res.render('postblog',  {id: id});
@@ -83,17 +90,16 @@ app.get('/login', (req, res) => {
 })
 
 app.get("/userconfig", (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.render('user')
 })
 
 app.post("/userconfig", (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.render('user')
 })
 
 
-
-app.use(express.json());
-routes(app);
 
 app.listen(3334);
 console.log("Server on port", 3334);
