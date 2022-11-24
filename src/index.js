@@ -8,9 +8,10 @@ import bodyParser from 'body-parser';
 import { prisma } from "./services/prisma";
 import { compare } from 'bcrypt';
 
+
 dotenv.config()
 const app = express();
-
+app.use(cors());
 app.use(session({secret: 'inarcd91921asd'}))
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -91,7 +92,6 @@ app.post("/userconfig", (req, res) => {
 
 
 
-app.use(cors());
 app.use(express.json());
 routes(app);
 
