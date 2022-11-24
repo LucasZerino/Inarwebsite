@@ -443,7 +443,7 @@
             const allpostsContainer = document.querySelector("#allposts")
 
             const getallposts = async () => {
-                const response = await fetch("http://localhost:3334/post");
+                const response = await fetch("http://18.228.214.193:3334/post");
                 return response.json();
             }
 
@@ -472,7 +472,7 @@
             const postsContainer = document.querySelector("#meusposts");
 
             const getuserpost = async () => {
-                const resposta = await fetch("http://localhost:3334/post/"+idusuario);
+                const resposta = await fetch("http://18.228.214.193:3334/post/"+idusuario);
                 return resposta.json();
             }
 
@@ -499,7 +499,7 @@
 
             const removerPost = async () => {
                 const id = document.querySelector(".edtbtn").id;
-                const response = await fetch("http://localhost:3334/post/"+id, {
+                const response = await fetch("http://18.228.214.193:3334/post/"+id, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json"
@@ -552,7 +552,7 @@
                         div.style.display = "none";
                     }, "5000")
                 }else{
-                        const response = await fetch("http://localhost:3334/user/"+idusuario, {
+                        const response = await fetch("http://18.228.214.193:3334/user/"+idusuario, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'
@@ -578,7 +578,7 @@
             
 
             const alterarnome =  async () => {
-                const response = await fetch("http://localhost:3334/user/"+idusuario, {
+                const response = await fetch("http://18.228.214.193:3334/user/"+idusuario, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -626,7 +626,7 @@
             addallposts();
             addpostlistuser();
             async function getDatos() {
-                let response = await fetch("http://localhost:3334/user/"+idusuario, requestOptions);
+                let response = await fetch("http://18.228.214.193:3334/user/"+idusuario, requestOptions);
                 let data = await response.json();
                 nameuser = data?.name;
                 emailuser = data?.email;
@@ -700,7 +700,7 @@
                         redirect: 'follow'
                         };
 
-                        fetch("http://localhost:3334/post", requestOptions)
+                        fetch("http://18.228.214.193:3334/post", requestOptions)
                         .then(response => response.text())
                         .then()
                         .catch();
@@ -711,7 +711,7 @@
 
 
             const modpost = async () => {
-                const response = await fetch("http://localhost:3334/post/"+idpost, {
+                const response = await fetch("http://18.228.214.193:3334/post/"+idpost, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

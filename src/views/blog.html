@@ -264,7 +264,7 @@
             const allpostsContainer = document.querySelector("#allposts")
             
             const getallposts = async () => {
-                const response = await fetch("http://localhost:3334/post");
+                const response = await fetch("http://18.228.214.193:3334/post");
                 
                 return response.json();
             }
@@ -315,7 +315,7 @@
                 }
             
                 const setblogunique = async () => {
-                    const response = await fetch("http://localhost:3334/postu/"+iddoblog);
+                    const response = await fetch("http://18.228.214.193:3334/postu/"+iddoblog);
                     return response.json();
                 }
             
