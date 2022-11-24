@@ -30,17 +30,7 @@ a,abbr,acronym,address,applet,b,big,blockquote,body,caption,center,cite,code,dd,
 /*------------------------------------------------------------------*/ 
 /*	3. Fontello
 /*------------------------------------------------------------------*/
-@font-face {
-  font-family: 'fontello';
-  src: url('font/fontello4c98.eot?65176178');
-  src: url('font/fontello4c98.eot?65176178#iefix') format('embedded-opentype'),
-       url('font/fontello4c98.woff2?65176178') format('woff2'),
-       url('font/fontello4c98.woff?65176178') format('woff'),
-       url('font/fontello4c98.ttf?65176178') format('truetype'),
-       url('font/fontello4c98.svg?65176178#fontello') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 /*

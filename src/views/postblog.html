@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
     <head>
         <meta charset="utf-8" />
@@ -113,6 +113,26 @@
                         </ul>
                     </div>
                     <div class="id" id="iduser"> <%=id%></div>
+                    <div class="none" id="codigoerr3">
+                        <div id="codigoerr6">
+                            <p>Nome alterado com sucesso!</p>
+                        </div>
+                    </div>
+                    <div class="none" id="codigoerr4">
+                        <div id="codigoerr6">
+                            <p>Senha alterada com sucesso!</p>
+                        </div>
+                    </div>
+                    <div class="none2" id="codigoerr5">
+                        <div id="codigoerr6">
+                            <p>Senha atual incorreta!</p>
+                        </div>
+                    </div>
+                    <div class="none2" id="codigoerr7">
+                        <div id="codigoerr6">
+                            <p>Senhas não são iguais!</p>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="container-fluid" id="main1">
@@ -134,7 +154,7 @@
                             </div>
                         </div>
                     
-                        <div class="row myContent">
+                        <div class="row" id="allposts">
                            
                         </div><!--end row-->
                     </div>
@@ -153,30 +173,26 @@
         
                                         <div class="mt-4 text-md-start text-center d-sm-flex">
                                             <img src="/img/dash/client/05.png" class="avatar float-md-left avatar-medium rounded-circle shadow me-md-4" alt="">
-                                            
-                                            <div class="mt-md-4 mt-3 mt-sm-0">
-                                                <a href="javascript:void(0)" class="btn btn-primary mt-2">Mudar foto</a>
-                                            </div>
                                         </div>
         
-                                        <form>
+                                        <div>
                                             <div class="row mt-4">
                                                 <div class="col-md-12">
                                                     <div class="mb-3">
                                                         <label class="form-label">Nome</label>
                                                         <div class="form-icon position-relative">
                                                             <i data-feather="user" class="fea icon-sm icons"></i>
-                                                            <input name="name" id="first" type="text" class="form-control ps-5" placeholder="Nome completo :">
+                                                            <input id="changenome" onchange="setNome()" name="name" id="first" type="text" class="form-control ps-5" placeholder="Nome completo :">
                                                         </div>
                                                     </div>
                                                 </div><!--end col-->
                                             </div><!--end row-->
                                             <div class="row">
                                                 <div class="col-sm-12">
-                                                    <input type="submit" id="submit" name="send" class="btn btn-primary" value="Salvar alterações">
+                                                    <div onclick="alterarnome()" id="submit" class="btn btn-primary" >Salvar alterações</div>
                                                 </div><!--end col-->
                                             </div><!--end row-->
-                                        </form><!--end form-->
+                                        </div><!--end form-->
                                     </div>
                                 </div>
                             </div><!--end col-->
@@ -191,7 +207,7 @@
                                                     <label class="form-label">Senha atual :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                                        <input type="password" class="form-control ps-5" placeholder="Senha atual" required="">
+                                                        <input id="changesenhaa" onchange="setSenhaa()" type="password" class="form-control ps-5" placeholder="Senha atual" required="">
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
@@ -201,7 +217,7 @@
                                                     <label class="form-label">Nova senha :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                                        <input type="password" class="form-control ps-5" placeholder="Nova senha" required="">
+                                                        <input id="changesenha"  onchange="setSenha()" type="password" class="form-control ps-5" placeholder="Nova senha" required="">
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
@@ -211,13 +227,14 @@
                                                     <label class="form-label">Confirmar nova senha :</label>
                                                     <div class="form-icon position-relative">
                                                         <i data-feather="key" class="fea icon-sm icons"></i>
-                                                        <input type="password" class="form-control ps-5" placeholder="Confirme a nova senha" required="">
+                                                        
+                                                        <input id="changesenhac" onchange="setSenhac()" type="password" class="form-control ps-5" placeholder="Confirme a nova senha" required="">
                                                     </div>
                                                 </div>
                                             </div><!--end col-->
         
                                             <div class="col-lg-12 mt-2 mb-0">
-                                                <button class="btn btn-primary">Salvar senha</button>
+                                                <div onclick="alterarSenha()" class="btn btn-primary">Salvar senha</div>
                                             </div><!--end col-->
                                         </div><!--end row-->
                                     </form>
@@ -236,22 +253,13 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="border-bottom p-3">Id</th>
-                                                        <th class="text-center border-bottom p-3" style="min-width: 200px;">Dt de criação</th>
-                                                        <th class="text-center border-bottom p-3">Dt de modificação</th>
+                                                        <th class="text-center border-bottom p-3" style="min-width: 200px;">Título</th>
                                                         <th class="text-end border-bottom p-3" style="min-width: 200px;"></th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody class="meusposts"id="meusposts">
                                                     <!-- Start -->
-                                                    <tr>
-                                                        <th class="p-3">#d01</th>
-                                                        <td class="text-center p-3">01/01/2021</td>
-                                                        <td class="text-center p-3">01/01/2021</td>
-                                                        <td class="text-end p-3">
-                                                            <div href="invoice.html" class="btn btn-sm btn-primary">editar</div>
-                                                            <div href="#" class="btn btn-sm btn-soft-primary ms-2">excluir</div>
-                                                        </td>
-                                                    </tr>
+                                    
                                                     <!-- End -->
                                                 </tbody>
                                             </table>
@@ -333,6 +341,56 @@
         </div>
         <!-- End modal -->
 
+        <div class="modal fade" id="newblogadd2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-bottom p-3">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body p-3 pt-4">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="d-grid">
+                                    <p class="text-muted">Edite a capa do blog aqui!.</p>
+                                    <div class="preview-box d-block justify-content-center rounded shadow overflow-hidden bg-light p-1"></div>
+                                    <div id="apresentar-imagem" class="imagemrecebida"></div>
+                                    <input type="file" id="postimg2" onchange="converterImagem2()" />
+                                </div>
+                            </div><!--end col-->
+
+                            <div class="col-md-8 mt-4 mt-sm-0">
+                                <div class="ms-md-4">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Título do post <span class="text-danger">*</span></label>
+                                                    <input onchange="setTitulo2()" name="name" id="titulo2" type="text" class="form-control" placeholder="Title :">
+                                                </div>
+                                            </div><!--end col-->
+                                            <div class="col-lg-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Conteúdo <span class="text-danger">*</span></label>
+                                                    <textarea onchange="setConteudo2()" name="comments" id="conteudo2" rows="4" class="form-control"></textarea>
+                                                </div>
+                                            </div><!--end col-->
+    
+                                            <div class="col-lg-12 text-end">
+                                                <div onclick="modpost()" class="btn btn-primary" data-bs-dismiss="modal" >Postar</div>
+                                            </div><!--end col-->
+                                        </div>
+                                    </form>
+                                </div>
+                            </div><!--end col-->
+                        </div><!--end row-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End modal -->
+
         <!-- Offcanvas Start -->
         <div class="offcanvas offcanvas-end bg-white shadow" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header border-bottom">
@@ -378,50 +436,176 @@
         </div>
         <!-- Offcanvas End -->
 
-
         <script>
+             let idusuario = document.getElementById("iduser").outerText;
+             let idpost;
 
-async function getPosts() {
-                let response = await fetch("http://localhost:3334/post");
-                data = await response.json();
-                posts = data;
+            const allpostsContainer = document.querySelector("#allposts")
 
-                //para cada post criar um post
-                const myContent = document.querySelector(".myContent")
+            const getallposts = async () => {
+                const response = await fetch("http://localhost:3334/post");
+                return response.json();
+            }
 
-                const showInHtml = posts.map((project, index) => {
-                    return `
-                    <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
+            const addallposts = async () => {
+                const allposts = await getallposts();
+                const postsTemplate = allposts.map((post, index) => `
+                <div class="col-xl-3 col-lg-4 col-md-6 mt-4">
                                 <div class="card blog blog-primary rounded border-0 shadow overflow-hidden">
                                     <div class="position-relative">
-                                        <img src=${project.image} class="card-img-top imagempost" alt="...">
+                                        <img src=${post?.image} class="card-img-top imagempost" alt="...">
                                         <div class="overlay rounded-top"></div>
                                     </div>
                                     <div class="card-body content">
-                                        <h5><a class="card-title title text-dark">${project?.title}</a></h5>
+                                        <h5><a class="card-title title text-dark">${post?.title}</a></h5>
                                     </div>
                                     <div class="author">
-                                        <small class="text-light user d-block"><i class="uil uil-user"></i> ${project?.author}</small>
+                                        <small class="text-light user d-block"><i class="uil uil-user"></i> ${post?.author}</small>
                                     </div>
                                 </div>
                             </div>
-                            `
-                })
+                `).join('')
 
-                myContent.innerHTML = showInHtml
-                return data;
+                allpostsContainer.innerHTML = postsTemplate;
+            }
+
+            const postsContainer = document.querySelector("#meusposts");
+
+            const getuserpost = async () => {
+                const resposta = await fetch("http://localhost:3334/post/"+idusuario);
+                return resposta.json();
+            }
+
+            const addpostlistuser = async () => {
+                const postagens = await getuserpost();
+                const postagensTemplate = postagens.map((post, index) =>
+                 `
+                <tr class="disp">
+                        <th class="p-3">${post?.id}</th>
+                        <th class="p-3">${post?.title}</th>
+                        <td class="text-end p-3">
+                        <div id="${post.id}" onclick='editarPost()' data-bs-toggle="modal" data-bs-target="#newblogadd2" class="btn btn-sm btn-primary edtbtn">editar</div>
+                        <div id="${post.id}" onclick='removerPost()' class="btn btn-sm btn-soft-primary ms-2 edtbtn">excluir</div>
+                        </td>
+                    </tr>`).join('')
+
+                    postsContainer.innerHTML = postagensTemplate;
+            }
+
+            const editarPost = async () => {
+                const id = document.querySelector(".edtbtn").id;
+                idpost = id;
+            }
+
+            const removerPost = async () => {
+                const id = document.querySelector(".edtbtn").id;
+                const response = await fetch("http://localhost:3334/post/"+id, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                setTimeout(() => {
+                        addpostlistuser();
+                            }, "500")
+                return response.json();
+
+
             }
 
 
             function setTitulo(){
                         titulo = document.getElementById('titulo').value;
                     }
+            function setTitulo2(){
+                    titulo2 = document.getElementById('titulo2').value;
+            }
+
+                    
+            function setNome(){
+                        nomechange = document.getElementById('changenome').value;
+                    }
+
+            function setSenhaa(){
+                        senhachangea = document.getElementById('changesenhaa').value;
+            }
+
+            function setSenhac(){
+                        senhachangec = document.getElementById('changesenhac').value;
+            }
+            function setSenha(){
+                        senhachange = document.getElementById('changesenha').value;
+            }
+                    
+                const alterarSenha =  async () => {
+                if(senhachangea != passuser || senhachangea == null || senhachangea == undefined || senhachangea == ""){
+                    var div = document.getElementById("codigoerr5");
+                    div.style.display = "block";
+                    setTimeout(() => {
+                        div.style.display = "none";
+                    }, "5000")
+                }else{
+                    if(senhachange != senhachangec || senhachange == null || senhachange == undefined || senhachange == "" || senhachange.length < 6){
+                        var div = document.getElementById("codigoerr7");
+                    div.style.display = "block";
+                    setTimeout(() => {
+                        div.style.display = "none";
+                    }, "5000")
+                }else{
+                        const response = await fetch("http://localhost:3334/user/"+idusuario, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            password: senhachange
+                        })
+                        
+                    });
+                    var div = document.getElementById("codigoerr4");
+                    div.style.display = "block";
+                    setTimeout(() => {
+                        div.style.display = "none";
+                    }, "5000")
+                    setTimeout(() => {
+                                getDatos();
+                            }, "500")
+                    return response.json();
+                }
+                }
+                }
+
+            
+
+            const alterarnome =  async () => {
+                const response = await fetch("http://localhost:3334/user/"+idusuario, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: nomechange
+                    })
+                    
+                });
+                var div = document.getElementById("codigoerr3");
+                div.style.display = "block";
+                setTimeout(() => {
+                    div.style.display = "none";
+                }, "5000")
+                setTimeout(() => {
+                            getDatos();
+                        }, "500")
+                return response.json();
+            }
 
             function setConteudo(){
                         conteudo = document.getElementById('conteudo').value;
-                    }       
-
-            let idusuario = document.getElementById("iduser").outerText;
+                    }  
+                    
+            function setConteudo2(){
+                conteudo2 = document.getElementById('conteudo2').value;
+            } 
 
             var myHeaders = new Headers();
             myHeaders.append("Cookie", "connect.sid=s%3AheVceINIG16mIdY3TsjJDx08YljROVIa.mFkTx7jlwah%2BTttHWOS4MkjCYwvzD3F1hoYk39wsnOU");
@@ -439,7 +623,8 @@ async function getPosts() {
             let passuser;
 
             getDatos();
-            getPosts();
+            addallposts();
+            addpostlistuser();
             async function getDatos() {
                 let response = await fetch("http://localhost:3334/user/"+idusuario, requestOptions);
                 let data = await response.json();
@@ -454,6 +639,7 @@ async function getPosts() {
            
 
             let imagemBase64;
+            let imagemBase642;
 
             function converterImagem(){
                 var receberArquivo = document.getElementById("postimg").files;
@@ -471,6 +657,22 @@ async function getPosts() {
                 }
             }
 
+            function converterImagem2(){
+                var receberArquivo = document.getElementById("postimg2").files;
+
+                if(receberArquivo.length>0){
+                    var carregarImagem = receberArquivo[0];
+
+                    var lerArquivo = new FileReader();
+
+                    lerArquivo.onload = function(arquivoCarregado){
+                    imagemBase642 = arquivoCarregado.target.result;       
+                       
+                    }
+                    lerArquivo.readAsDataURL(carregarImagem);
+                }
+            }
+
             function criarpost(){
                 const element = document.getElementById('newblogadd')
                 element.classList.remove('show');
@@ -479,11 +681,6 @@ async function getPosts() {
                 const element2 = document.getElementById('bodyrmv')
                 element2.classList.remove("modal-open");
                 element.style.overflow = "auto";
-            
-                setTimeout(() => {
-                            console.log("tentei pegar os posts!")
-                            getPosts();
-                        }, "2000")
                 var myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
                 myHeaders.append("Cookie", "connect.sid=s%3AlbeclBJ8ODed7KtDVEsGNowrxwLYno4j.pJV%2Bu1H0IEliKqa49VuGOuQ1UvJXwyXkrncI0sodFro");
@@ -505,9 +702,33 @@ async function getPosts() {
 
                         fetch("http://localhost:3334/post", requestOptions)
                         .then(response => response.text())
-                        .then(result => console.log(result))
-                        .catch(error => console.log('error', error));
+                        .then()
+                        .catch();
+                        setTimeout(() => {
+                            addallposts();
+                        }, "500")
                             }
+
+
+            const modpost = async () => {
+                const response = await fetch("http://localhost:3334/post/"+idpost, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title: titulo2,
+                        content: conteudo2,
+                        image: imagemBase642
+                    })
+                    
+                });
+                setTimeout(() => {
+                            addallposts();
+                            addpostlistuser();
+                        }, "500")
+                return response.json();
+            }
         </script>
 
         <script>

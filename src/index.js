@@ -25,6 +25,8 @@ app.use('/fonts', express.static(__dirname + 'public/fonts'));
 app.set("views", path.join(__dirname, "views"));
 
 
+
+
 app.get('/', (req, res) => {
     res.render('index');
 })
@@ -35,9 +37,6 @@ app.get('/blog', (req, res) => {
 
 
 app.post('/login', (req, res) => {
-    console.log(req.body.email);
-    console.log(req.body.password);
-    console.log(req.body.sair);
     if(req.body.sair == 'sair'){
         req.session.destroy();
         res.redirect('login')
@@ -60,13 +59,10 @@ app.post('/login', (req, res) => {
         
 
         if(req.body.password == user.password){
-            console.log("senhas iguais!")
             var id = user.id;
             req.session.login = id;
-            console.log(req.session.login);
             res.render('postblog',  {id: id});
         }else{
-            console.log("senhas diferentes!")
             res.render('login');
         }
     }

@@ -140,7 +140,7 @@
                     <ul>
                         <li><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
                         <li><a href="#"><i class="fa fa-facebook-square"></i>Facebook</a></li>
-                        <li><a href="#"><i class="fa fa-file-text-o"></i>Blog Login</a></li>
+                        <li><a href="/login"><i class="fa fa-file-text-o"></i>Blog Login</a></li>
                     </ul>
                 </div>
             </div>
@@ -150,63 +150,66 @@
 <!-- PopUP Menu -->
 
         <!-- Page Banner -->
-        <section class="pageBanner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="banner_content text-center">
-                            <h2 class="blogtext">Blog Inar</h2>
+        <div id="main1">
+            <section class="pageBanner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="banner_content text-center">
+                                <h2 class="blogtext">Blog Inar</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Page Banner -->
+            </section>
+            <!-- Page Banner -->
+    
+            <!-- Blog Section -->
+            <section class="commonSection blogPage">
+                <div class="container">
+                    <div class="row" id="allposts">
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Blog Section -->
 
-        <!-- Blog Section -->
-        <section class="commonSection blogPage">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 col-md-4">
-                        <div class="latestBlogItem">
-                            <div class="lbi_thumb">
-                                <img src="img/blog/1.jpg" alt="">
-                            </div>
-                            <div class="lbi_details">
-                                <a href="#" class="lbid_date">26 NOV</a>
-                                <h2><a href="blog_single.html">basic rules of running web  agency business</a></h2>
-                                <a class="learnM" href="blog_single.html">Learn More</a>
+        <div class="none" id="main2">
+            <section class="pageBanner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="banner_content text-center">
+                                <h4><a href="#">home</a> - Blog</h4>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-sm-6 col-md-4">
-                        <div class="latestBlogItem">
-                            <div class="lbi_thumb">
-                                <img src="img/blog/2.jpg" alt="">
-                            </div>
-                            <div class="lbi_details">
-                                <a href="#" class="lbid_date">20 NOV</a>
-                                <h2><a href="blog_single.html">Become the best sale marketer</a></h2>
-                                <a class="learnM" href="blog_single.html">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 col-md-4">
-                        <div class="latestBlogItem">
-                            <div class="lbi_thumb">
-                                <img src="img/blog/3.jpg" alt="">
-                            </div>
-                            <div class="lbi_details">
-                                <a href="#" class="lbid_date">16 NOV</a>
-                                <h2><a href="blog_single.html">Introducing latest mopaly features</a></h2>
-                                <a class="learnM" href="blog_single.html">Learn More</a>
-                            </div>
-                        </div>
-                    </div>  
                 </div>
-            </div>
-        </section>
-        <!-- Blog Section -->
+            </section>
+            <!-- Page Banner -->
+        
+            <!-- Blog Detail Section -->
+            <section class="commonSection blogDetails">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="single_blog">
+                                <div class="blog_headings">
+                                    <span class="blog_date" id="blogdate"></span>
+                                    <h2 id="blogtit"></h2>
+                                </div>
+                                <div class="blog_details">
+                                    <p id="blogcontent">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Blog Detail Section -->
+        </div>
+        
 
         
         <!-- Footer Section -->
@@ -237,7 +240,7 @@
                             <ul>
                                 <li><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
                                 <li><a href="#"><i class="fa fa-facebook-square"></i>Facebook</a></li>
-                                <li><a href="#"><i class="fa fa-file-text-o"></i>Blog Login</a></li>
+                                <li><a href="/login"><i class="fa fa-file-text-o"></i>Blog Login</a></li>
                             </ul>
                         </aside>
                     </div>
@@ -256,6 +259,85 @@
 
 
         <!-- Include All JS -->
+        <script>
+
+            const allpostsContainer = document.querySelector("#allposts")
+            
+            const getallposts = async () => {
+                const response = await fetch("http://localhost:3334/post");
+                
+                return response.json();
+            }
+            
+            const addallposts = async () => {
+                const allposts = await getallposts();
+                if(allposts.length<1){
+                    allpostsContainer.innerHTML = `<h3>Não há postagens no momento</h3>`
+                }
+                const postsTemplate = allposts.map((post, index) => `
+                <div class="col-lg-4 col-sm-6 col-md-4">
+                                    <div class="latestBlogItem">
+                                        <div class="lbi_thumb">
+                                            <img src=${post?.image} alt="">
+                                        </div>
+                                        <div class="lbi_details">
+                                            <h2><a href="blog_single.html">${post?.title}</a></h2>
+                                            <div id="${post?.id}"  onclick='editarPost(${post?.id})' class="learnM edtbtn" ">Ler completo</div>
+                                        </div>
+                                    </div>
+                                </div>
+                `).join('')
+            
+                allpostsContainer.innerHTML = postsTemplate;
+            }
+            
+            addallposts();
+            </script>
+            <script>
+                let iddoblog
+                let blogtit
+                let blogauth
+                let blogdate
+                let blogcontent
+            
+                 const editarPost = async (id) => {
+                            iddoblog = id;
+                           console.log(iddoblog);
+                           changepage();
+                           addblogunique(id);
+                        }
+            
+                function changepage(){
+                    var div = document.getElementById("main1");
+                            div.style.display = "none";
+                            var div2 = document.getElementById("main2");
+                            div2.style.display = "block";
+                }
+            
+                const setblogunique = async () => {
+                    const response = await fetch("http://localhost:3334/postu/"+iddoblog);
+                    return response.json();
+                }
+            
+                const addblogunique = async () => {
+                            const postblog = await setblogunique();
+                            blogtit = postblog?.title;
+                            blogauth = postblog?.author;
+                            blogdia = postblog?.updatedAt.substring(8,10);
+                            blogmes = postblog?.updatedAt.substring(5,7);
+                            blogano = postblog?.updatedAt.substring(0,4);  
+                            blogcontent = postblog?.content;      
+                            console.log("novo postblog", postblog)
+                            console.log("novo postblog", blogtit)
+                            const blogtitcontainer = document.querySelector("#blogtit")
+                            blogtitcontainer.innerHTML = blogtit;
+                            const blogdatecontainer = document.querySelector("#blogdate")
+                            blogdatecontainer.innerHTML = blogdia+'/'+blogmes+'/'+blogano;
+                            const blogcontentcontainer = document.querySelector("#blogcontent")
+                            blogcontentcontainer.innerHTML = blogcontent;
+                       
+                        }
+            </script>
         <script src="js/jquery2.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/modernizr.custom.js"></script>
