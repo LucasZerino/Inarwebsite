@@ -33,12 +33,12 @@ app.set("views", path.join(__dirname, "views"));
 
 app.get('/', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.render('index');
+    res.render('index', {api: process.env.API});
 })
 
 app.get('/blog', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.render('blog');
+    res.render('blog', {api: process.env.API});
 })
 
 
@@ -46,7 +46,7 @@ app.post('/login', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     if(req.body.sair == 'sair'){
         req.session.destroy();
-        res.redirect('login')
+        res.redirect('login', {api: process.env.API})
     }
 
     async function login(){
@@ -56,11 +56,11 @@ app.post('/login', (req, res) => {
             }
         });
         if(!user){
-            res.render('login');
+            res.render('login', {api: process.env.API});
             return null;
         }
         if(user == undefined){
-            res.render('login');
+            res.render('login', {api: process.env.API});
             return null;
         }
         
@@ -68,7 +68,7 @@ app.post('/login', (req, res) => {
         if(req.body.password == user.password){
             var id = user.id;
             req.session.login = id;
-            res.render('postblog',  {id: id});
+            res.render('postblog',  {id: id, api: process.env.API});
         }else{
             res.render('login');
         }
@@ -83,23 +83,24 @@ app.get('/login', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     if(req.session.login){  
         var id = req.session.login;
-        res.render('postblog',  {id: id});
+        res.render('postblog',  {id: id, api: process.env.API});
     }else{
-        res.render('login');
+        res.render('login', {api: process.env.API});
     }
 })
 
 app.get("/userconfig", (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.render('user')
+    res.render('user', {api: process.env.API})
 })
 
 app.post("/userconfig", (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.render('user')
+    res.render('user', {api: process.env.API})
 })
 
-
-
-app.listen(3334);
-console.log("Server on port", 3334);
+let PORT = process.env.PORT || 3334
+let API = process.env.API
+console.log(API)
+app.listen(PORT);
+console.log("Server on port", PORT);

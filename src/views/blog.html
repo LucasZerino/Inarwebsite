@@ -21,6 +21,7 @@
         <link rel="stylesheet" type="text/css" href="css/theme.css"/>
         <link rel="stylesheet" type="text/css" href="css/responsive.css"/>
         <link rel="stylesheet" type="text/css" href="css/presets/color10.css"/>
+        <link rel="stylesheet" type="text/css" href="css/blog.css"/>
         <!-- End Include All CSS -->
 
         <!-- Favicon Icon -->
@@ -39,6 +40,7 @@
 <!-- !Styles -->
 
 </head>
+<div class="id" id="API"> <%=api%></div>
     <body class="home1">
         <!-- Preloading -->
         <div class="preloader text-center">
@@ -257,14 +259,13 @@
         <!-- Footer Section -->
 
 
-
         <!-- Include All JS -->
         <script>
-
+            let api = document.getElementById("API").outerText;
             const allpostsContainer = document.querySelector("#allposts")
             
             const getallposts = async () => {
-                const response = await fetch("http://18.228.214.193:3334/post");
+                const response = await fetch(api+"/post");
                 
                 return response.json();
             }
@@ -278,7 +279,7 @@
                 <div class="col-lg-4 col-sm-6 col-md-4">
                                     <div class="latestBlogItem">
                                         <div class="lbi_thumb">
-                                            <img src=${post?.image} alt="">
+                                            <img class="blogimg" src=${post?.image} alt="">
                                         </div>
                                         <div class="lbi_details">
                                             <h2><a href="blog_single.html">${post?.title}</a></h2>
@@ -315,7 +316,7 @@
                 }
             
                 const setblogunique = async () => {
-                    const response = await fetch("http://18.228.214.193:3334/postu/"+iddoblog);
+                    const response = await fetch(api+"/postu/"+iddoblog);
                     return response.json();
                 }
             

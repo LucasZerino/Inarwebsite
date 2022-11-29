@@ -25,6 +25,7 @@
         <!-- Css -->
         <link href="/css/dash/style.css" rel="stylesheet" type="text/css" id="theme-opt" />
         <link href="/css/dash/edit.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="css/blog.css"/>
     </head>
 
     <body id="bodyrmv">
@@ -113,6 +114,7 @@
                         </ul>
                     </div>
                     <div class="id" id="iduser"> <%=id%></div>
+                    <div class="id" id="API"> <%=api%></div>
                     <div class="none" id="codigoerr3">
                         <div id="codigoerr6">
                             <p>Nome alterado com sucesso!</p>
@@ -437,13 +439,14 @@
         <!-- Offcanvas End -->
 
         <script>
+             let api = document.getElementById("API").outerText;
              let idusuario = document.getElementById("iduser").outerText;
              let idpost;
 
             const allpostsContainer = document.querySelector("#allposts")
 
             const getallposts = async () => {
-                const response = await fetch("http://18.228.214.193:3334/post");
+                const response = await fetch(api+"/post");
                 return response.json();
             }
 
@@ -472,7 +475,7 @@
             const postsContainer = document.querySelector("#meusposts");
 
             const getuserpost = async () => {
-                const resposta = await fetch("http://18.228.214.193:3334/post/"+idusuario);
+                const resposta = await fetch(api+"/post/"+idusuario);
                 return resposta.json();
             }
 
@@ -499,7 +502,7 @@
 
             const removerPost = async () => {
                 const id = document.querySelector(".edtbtn").id;
-                const response = await fetch("http://18.228.214.193:3334/post/"+id, {
+                const response = await fetch(api+"/post/"+id, {
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json"
@@ -552,7 +555,7 @@
                         div.style.display = "none";
                     }, "5000")
                 }else{
-                        const response = await fetch("http://18.228.214.193:3334/user/"+idusuario, {
+                        const response = await fetch(api+"/user/"+idusuario, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'
@@ -578,7 +581,7 @@
             
 
             const alterarnome =  async () => {
-                const response = await fetch("http://18.228.214.193:3334/user/"+idusuario, {
+                const response = await fetch(api+"/user/"+idusuario, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -626,7 +629,7 @@
             addallposts();
             addpostlistuser();
             async function getDatos() {
-                let response = await fetch("http://18.228.214.193:3334/user/"+idusuario, requestOptions);
+                let response = await fetch(api+"/user/"+idusuario, requestOptions);
                 let data = await response.json();
                 nameuser = data?.name;
                 emailuser = data?.email;
@@ -700,7 +703,7 @@
                         redirect: 'follow'
                         };
 
-                        fetch("http://18.228.214.193:3334/post", requestOptions)
+                        fetch(api+"/post", requestOptions)
                         .then(response => response.text())
                         .then()
                         .catch();
@@ -712,7 +715,7 @@
 
 
             const modpost = async () => {
-                const response = await fetch("http://18.228.214.193:3334/post/"+idpost, {
+                const response = await fetch(api+"/post/"+idpost, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

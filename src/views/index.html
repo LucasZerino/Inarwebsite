@@ -29,6 +29,7 @@
         <link rel="stylesheet" type="text/css" href="css/theme.css"/>
         <link rel="stylesheet" type="text/css" href="css/responsive.css"/>
         <link rel="stylesheet" type="text/css" href="css/presets/color10.css"/>
+        <link rel="stylesheet" type="text/css" href="css/blog.css"/>
         <!-- End Include All CSS -->
 
         <!-- Favicon Icon -->
@@ -47,7 +48,7 @@
 <!-- !Styles -->
 <link rel="stylesheet" type="text/css" href="css/edit.css"/>
 </head>
-
+<div class="id" id="API"> <%=api%></div>
 <body class="home-static">
 	 <!-- Preloading -->
 	 <div class="preloader text-center">
@@ -67,19 +68,18 @@
 			<div class="row">
 				<div class="col-lg-2 col-sm-3 col-md-3">
 					<div class="logo">
-						<a href="index.html"><img src="img/logo.png" alt=""/></a>
+						<a onclick="changepage2()" href="#"><img src="img/logo.png" alt=""/></a>
 					</div>
 				</div>
 				<div class="col-lg-8 col-sm-7 col-md-7">
 					<nav class="mainmenu text-center mti">
 						<ul>
 							<li class="menu-item-has-children">
-								<a href="#">home</a>
+								<a onclick="changepage2()" href="#">home</a>
 							</li>
-							<li><a href="#">História</a></li>
-							<li class="menu-item-has-children"><a href="#">Sobre o inar</a></li>
-							<li class="menu-item-has-children"><a href="#">Diretoria inar</a></li>
-							<li class="menu-item-has-children"><a href="./blog">Blog</a></li>
+							<li><a href="#historia">História</a></li>
+							<li class="menu-item-has-children"><a href="#sobreinar">Sobre o inar</a></li>
+							<li class="menu-item-has-children"><a href="#bloginar">Blog</a></li>
 							<li><a href="#">Contato</a></li>
 						</ul>
 					</nav>
@@ -123,7 +123,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-left">
 					<div class="logo2">
-						<a href="index.html"><img src="img/logo.png" alt=""></a>
+						<a href="#"><img src="img/logo.png" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -135,8 +135,7 @@
 								<li><a href="#">Home</a></li>
 								<li><a href="#">História</a></li>
 								<li><a href="#">Sobre o inar</a></li>
-								<li><a href="#">Diretoria inar</a></li>
-								<li><a href="./blog">Blog</a></li>
+								<li><a href="#bloginar">Blog</a></li>
 								<li><a href="#">Contato</a></li>
 							</ul>
 						</div>
@@ -217,7 +216,7 @@
 				<div class="neoh_fn_timeline">
 					
 					<!-- Timeline Content -->
-					<div class="timeline_content">
+					<div class="timeline_content" id="historia">
 						<ul class="timeline_list">
 							<li class="timeline_item" data-index="1">
 								<div class="t_item">
@@ -483,7 +482,7 @@
 	</div>
 		
         <!-- About Agency Section -->
-        <section class="commonSection ab_agency">
+        <section class="commonSection ab_agency" id="sobreinar">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 col-sm-6 col-md-6 PR_79">
@@ -508,91 +507,30 @@
         <!-- About Agency Section -->
 
 
-		  <!-- Team Section -->
-		  <section class="commonSection team">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h4 class="sub_title">Conheça nossos diretores</h4><br>
-                        <h2 class="sec_title white">Diretoria Inar</h2>
-                        <p class="sec_desc">
-                            Nosso time está empenhado para que você tenha a melhor experiência possível.
-                        </p>
+			<!-- Blog Section -->
+            <section id="blog">
+                <div class="container" id="bloginar">
+                    
+                    <!-- Main Title -->
+                    <div class="neoh_fn_title">
+                        <a href="./blog" class="fn_title bloglink">INAR NEWS</a>
+                        <div class="line"><span></span></div>
                     </div>
+                    <!-- !Main Title -->
+                    
+                    
+                    <!-- Moving Blog List Shortcode -->
+                    <div class="neoh_fn_moving_blog">
+                        <ul id="allposts">
+            
+                        </ul>
+                    </div>
+                    <!-- !Moving Blog List Shortcode -->
+                    
+                    
                 </div>
-            </div>
-            <div class="team_slider">
-                <div class="singleTM">
-                    <div class="tm_img">
-                        <img src="img/team/1.jpg" alt="">
-                        <div class="tm_overlay">
-                            <div class="team_social">
-                                <a href="#"><span>Facebook</span></a>
-                                <a href="#"><span>Twitter</span></a>
-                                <a href="#"><span>Youtube</span></a>
-                            </div>
-                            <a href="#" class="common_btn"><span>Ver perfil</span></a>
-                        </div>
-                    </div>
-                    <div class="detail_TM">
-                        <h5 class="dtw">Júnior Coelho</h5>
-                        <h6>Presidente</h6>
-                    </div>
-                </div>
-                <div class="singleTM">
-                    <div class="tm_img">
-                        <img src="img/team/2.jpg" alt="">
-                        <div class="tm_overlay">
-                            <div class="team_social">
-                                <a href="#"><span>Facebook</span></a>
-                                <a href="#"><span>Twitter</span></a>
-                                <a href="#"><span>Youtube</span></a>
-                            </div>
-                            <a href="#" class="common_btn"><span>Ver perfil</span></a>
-                        </div>
-                    </div>
-                    <div class="detail_TM">
-                        <h5 class="dtw">Renato</h5>
-                        <h6>Vice Presidente</h6>
-                    </div>
-                </div>
-                <div class="singleTM">
-                    <div class="tm_img">
-                        <img src="img/team/3.jpg" alt="">
-                        <div class="tm_overlay">
-                            <div class="team_social">
-                                <a href="#"><span>Facebook</span></a>
-                                <a href="#"><span>Twitter</span></a>
-                                <a href="#"><span>Youtube</span></a>
-                            </div>
-                            <a href="#" class="common_btn"><span>Ver perfil</span></a>
-                        </div>
-                    </div>
-                    <div class="detail_TM">
-                        <h5 class="dtw">Érico César</h5>
-                        <h6>2 Vice Presidente</h6>
-                    </div>
-                </div>
-                <div class="singleTM">
-                    <div class="tm_img">
-                        <img src="img/team/4.jpg" alt="">
-                        <div class="tm_overlay">
-                            <div class="team_social">
-                                <a href="#"><span>Facebook</span></a>
-                                <a href="#"><span>Twitter</span></a>
-                                <a href="#"><span>Youtube</span></a>
-                            </div>
-                            <a href="#" class="common_btn"><span>Ver perfil</span></a>
-                        </div>
-                    </div>
-                    <div class="detail_TM">
-                        <h5 class="dtw">Gabriel Borges</h5>
-                        <h6>Jurídico</h6>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Team Section -->
+            </section>
+            <!-- !Blog Section -->
 
 
 		 <!-- Client Section -->
@@ -648,21 +586,6 @@
             </div>
         </section>
         <!-- Client Section -->
-
-		<!-- Blog Section -->
-        <section class="commonSection blog">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h4 class="sub_title">nossas novas postagens</h4>
-                        <h2 class="sec_title white">Inar Blog</h2>
-                    </div>
-                </div>
-                <div class="row" id="allposts">
-                </div>
-            </div>
-        </section>
-        <!-- Blog Section -->
 
 
         <!-- Footer Section -->
@@ -764,38 +687,72 @@
 
 
 <script>
-
+ let api = document.getElementById("API").outerText;
 const allpostsContainer = document.querySelector("#allposts")
 
 const getallposts = async () => {
-    const response = await fetch("http://18.228.214.193:3334/post");
-    
+    const response = await fetch(api+"/post");
+    if(response === null || response === undefined){
+        return null;
+    }
     return response.json();
 }
 
 const addallposts = async () => {
     const allposts = await getallposts();
-    allposts.length = 3;
-    console.log("novo allpost", allposts)
-    if(allposts.length<1){
-        allpostsContainer.innerHTML = `<h3>Não há postagens no momento</h3>`
+   
+    if(allposts.length<1 || allposts == null || allposts == undefined){
+        allpostsContainer.innerHTML = `<div class="postagem2">
+            <h3 class="postagem">Não há postagens no momento</h3>
+            </div>`
     }
+    allposts.length = 3;
+    const post1data = allposts[0].updatedAt;
     const postsTemplate = allposts.map((post, index) => `
-
-        <div class="col-lg-4 col-sm-6 col-md-4">
-            <div class="latestBlogItem">
-                <div class="lbi_thumb">
-                    <img class="imagemblog" id="${post?.id}" src=${post?.image} alt="">
-                </div>
-                <div class="lbi_details">
-                    <h2><a href="blog_single.html">${post?.title}</a></h2>
-                <div id="${post?.id}"  onclick='editarPost(${post?.id})' class="learnM edtbtn" ">Ler completo</div>
-                </div>
-            </div>
-        </div>
+                            <li>
+                                <div class="item">
+                                    <img src="img/blog/1.jpg" alt="" class="moving_img">
+                                    <p class="fn_date">
+                                        <span id="${post.id}"></span>
+                                    </p>
+                                    <h3 class="fn_title">
+                                        <a href="blog-single.html">${post.title}</a>
+                                    </h3>
+                                    <p class="fn_desc" id="b${post.id}"></p>
+                                    <p class="fn_read">
+                                        <a class="neoh_fn_button only_text">
+                                            <div id="${post?.id}"  onclick='editarPost(${post?.id})' class="learnM edtbtn" ">Ler completo</div>
+                                        </a>
+                                    </p>
+                                </div>
+                            </li>
     `).join('')
 
     allpostsContainer.innerHTML = postsTemplate;
+    colocardata();
+}
+
+const colocardata = async () => {
+    console.log("entrei!")
+    const allposts = await getallposts();
+    if(allposts.length > 3){
+        allposts.length = 3;
+    }
+    x = allposts.length
+    for(i=1; i<=x; i++){
+        const response = await fetch(api+"/postu/"+i);
+        const data = await response.json();
+        const data2 = data.updatedAt;
+        blogdia = data2?.substring(8,10);
+                blogmes = data2?.substring(5,7);
+                blogano = data2?.substring(0,4);  
+        const postDate = document.getElementById(i)
+            postDate.innerHTML = blogdia+'/'+blogmes+'/'+blogano;
+
+        const postCont = document.getElementById('b'+i)
+        console.log(postCont)
+        postCont.innerHTML = data.content?.substring(0, 50)+'...';
+    }
 }
 
 addallposts();
@@ -821,8 +778,16 @@ addallposts();
                 div2.style.display = "block";
     }
 
+
+
+    function changepage2(){
+        var div = document.getElementById("main1");
+                div.style.display = "block";
+                var div2 = document.getElementById("main2");
+                div2.style.display = "none";
+    }
     const setblogunique = async () => {
-        const response = await fetch("http://18.228.214.193:3334/postu/"+iddoblog);
+        const response = await fetch(api+"/postu/"+iddoblog);
         return response.json();
     }
 
