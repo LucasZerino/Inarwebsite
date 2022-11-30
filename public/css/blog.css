@@ -52,3 +52,14 @@ html {
 .bloglink:hover{
     color: yellow !important;
 }
+
+
+
+.edtbtn{
+    background: transparent !important;
+}
+
+.neoh_fn_button:hover .edtbtn{
+    color:  yellow;
+    cursor: pointer;
+}

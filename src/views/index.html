@@ -700,6 +700,7 @@ const getallposts = async () => {
 
 const addallposts = async () => {
     const allposts = await getallposts();
+    console.log(allposts, "allposts: ")
    
     if(allposts.length<1 || allposts == null || allposts == undefined){
         allpostsContainer.innerHTML = `<div class="postagem2">
@@ -716,13 +717,16 @@ const addallposts = async () => {
                                         <span id="${post.id}"></span>
                                     </p>
                                     <h3 class="fn_title">
-                                        <a href="blog-single.html">${post.title}</a>
+                                        <div href="#">${post.title}</div>
                                     </h3>
                                     <p class="fn_desc" id="b${post.id}"></p>
                                     <p class="fn_read">
-                                        <a class="neoh_fn_button only_text">
-                                            <div id="${post?.id}"  onclick='editarPost(${post?.id})' class="learnM edtbtn" ">Ler completo</div>
-                                        </a>
+                                        <form method="post">
+                                            <input type="hidden" placeholder="Email" name="postid" value="${post?.id}" />
+                                                <a class="neoh_fn_button only_text">
+                                                    <input type="submit" id="${post?.id}" class="learnM edtbtn" value="Ler completo" />
+                                                </a>
+                                          </form>
                                     </p>
                                 </div>
                             </li>

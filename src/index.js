@@ -36,9 +36,22 @@ app.get('/', (req, res) => {
     res.render('index', {api: process.env.API});
 })
 
+app.post('/', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+   const Postid = req.body.postid;
+   res.render('uniqueblog', {api: process.env.API, postid: Postid});
+})
+
+
 app.get('/blog', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.render('blog', {api: process.env.API});
+})
+
+app.post('/blog', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+   const Postid = req.body.postid;
+   res.render('uniqueblog', {api: process.env.API, postid: Postid});
 })
 
 

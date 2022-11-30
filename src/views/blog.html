@@ -167,52 +167,29 @@
             <!-- Page Banner -->
     
             <!-- Blog Section -->
-            <section class="commonSection blogPage">
-                <div class="container">
-                    <div class="row" id="allposts">
+            <div class="neoh_fn_content">
+            
+            
+                <!-- Blog Page -->
+                <div class="neoh_fn_blog_page">
+                    
+                    <div class="container" id="blog">
+                        <!-- Moving Blog List Shortcode -->
+                        <div class="neoh_fn_moving_blog">
+                            <ul id="allposts">
+            
+                            </ul>
+                        </div>
+                        <!-- !Moving Blog List Shortcode -->  
                     </div>
+                        
                 </div>
-            </section>
+                <!-- !Blog Page -->
+            
+            
+            </div>
         </div>
         <!-- Blog Section -->
-
-        <div class="none" id="main2">
-            <section class="pageBanner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="banner_content text-center">
-                                <h4><a href="#">home</a> - Blog</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Page Banner -->
-        
-            <!-- Blog Detail Section -->
-            <section class="commonSection blogDetails">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12">
-                            <div class="single_blog">
-                                <div class="blog_headings">
-                                    <span class="blog_date" id="blogdate"></span>
-                                    <h2 id="blogtit"></h2>
-                                </div>
-                                <div class="blog_details">
-                                    <p id="blogcontent">
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Blog Detail Section -->
-        </div>
-        
-
         
         <!-- Footer Section -->
         <footer class="footer_1">
@@ -264,35 +241,77 @@
             let api = document.getElementById("API").outerText;
             const allpostsContainer = document.querySelector("#allposts")
             
-            const getallposts = async () => {
-                const response = await fetch(api+"/post");
-                
-                return response.json();
-            }
-            
-            const addallposts = async () => {
-                const allposts = await getallposts();
-                if(allposts.length<1){
-                    allpostsContainer.innerHTML = `<h3>Não há postagens no momento</h3>`
-                }
-                const postsTemplate = allposts.map((post, index) => `
-                <div class="col-lg-4 col-sm-6 col-md-4">
-                                    <div class="latestBlogItem">
-                                        <div class="lbi_thumb">
-                                            <img class="blogimg" src=${post?.image} alt="">
-                                        </div>
-                                        <div class="lbi_details">
-                                            <h2><a href="blog_single.html">${post?.title}</a></h2>
-                                            <div id="${post?.id}"  onclick='editarPost(${post?.id})' class="learnM edtbtn" ">Ler completo</div>
-                                        </div>
-                                    </div>
+           
+const getallposts = async () => {
+    const response = await fetch(api+"/post");
+    if(response === null || response === undefined){
+        return null;
+    }
+    return response.json();
+}
+
+const addallposts = async () => {
+    const allposts = await getallposts();
+    console.log(allposts, "allposts: ")
+   
+    if(allposts.length<1 || allposts == null || allposts == undefined){
+        allpostsContainer.innerHTML = `<div class="postagem2">
+            <h3 class="postagem">Não há postagens no momento</h3>
+            </div>`
+    }
+    allposts.length = 3;
+    const post1data = allposts[0].updatedAt;
+    const postsTemplate = allposts.map((post, index) => `
+    <li>
+                                <div class="item">
+                                    <img src="img/blog/1.jpg" alt="" class="moving_img">
+                                    <p class="fn_date">
+                                        <span id="${post.id}"></span>
+                                    </p>
+                                    <h3 class="fn_title">
+                                        <div href="#">${post.title}</div>
+                                    </h3>
+                                    <p class="fn_desc" id="b${post.id}"></p>
+                                    <p class="fn_read">
+                                        <form method="post">
+                                            <input type="hidden" placeholder="Email" name="postid" value="${post?.id}" />
+                                                <a class="neoh_fn_button only_text">
+                                                    <input type="submit" id="${post?.id}" class="learnM edtbtn" value="Ler completo" />
+                                                </a>
+                                          </form>
+                                    </p>
                                 </div>
-                `).join('')
-            
-                allpostsContainer.innerHTML = postsTemplate;
-            }
-            
-            addallposts();
+                            </li>
+    `).join('')
+
+    allpostsContainer.innerHTML = postsTemplate;
+    colocardata();
+}
+
+const colocardata = async () => {
+    console.log("entrei!")
+    const allposts = await getallposts();
+    if(allposts.length > 3){
+        allposts.length = 3;
+    }
+    x = allposts.length
+    for(i=1; i<=x; i++){
+        const response = await fetch(api+"/postu/"+i);
+        const data = await response.json();
+        const data2 = data.updatedAt;
+        blogdia = data2?.substring(8,10);
+                blogmes = data2?.substring(5,7);
+                blogano = data2?.substring(0,4);  
+        const postDate = document.getElementById(i)
+            postDate.innerHTML = blogdia+'/'+blogmes+'/'+blogano;
+
+        const postCont = document.getElementById('b'+i)
+        console.log(postCont)
+        postCont.innerHTML = data.content?.substring(0, 50)+'...';
+    }
+}
+
+addallposts();
             </script>
             <script>
                 let iddoblog
