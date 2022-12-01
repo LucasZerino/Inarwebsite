@@ -44,7 +44,7 @@
             <nav id="sidebar" class="sidebar-wrapper sidebar-dark">
                 <div class="sidebar-content" data-simplebar style="height: calc(100% - 60px);">
                     <div class="sidebar-brand">
-                        <a href="index.html">
+                        <a href="../">
                             <img src="/img/dash/logo-dark.png" height="24" class="logo-light-mode" alt="">
                             <img src="/img/dash/logo-light.png" height="24" class="logo-dark-mode" alt="">
                             <span class="sidebar-colored">
@@ -145,7 +145,7 @@
 
                                 <nav aria-label="breadcrumb" class="d-inline-block mt-1">
                                     <ul class="breadcrumb breadcrumb-muted bg-transparent rounded mb-0 p-0">
-                                        <li class="breadcrumb-item text-capitalize"><a href="index.html">Inar</a></li>
+                                        <li class="breadcrumb-item text-capitalize"><a href="../">Inar</a></li>
                                         <li class="breadcrumb-item text-capitalize active" aria-current="page">Blog</li>
                                     </ul>
                                 </nav>
@@ -415,7 +415,7 @@
                                     <li class="d-grid"><a href="javascript:void(0)" class="dark-ltr-version t-ltr-dark" onclick="setTheme('style-dark')"><img src="/img/dash/demos/dark.png" class="img-fluid rounded-md shadow-md d-block" alt=""><span class="text-muted mt-2 d-block">LTR Version</span></a></li>
                                     <li class="d-grid"><a href="javascript:void(0)" class="dark-version t-dark mt-4" onclick="setTheme('style-dark')"><img src="/img/dash/demos/dark.png" class="img-fluid rounded-md shadow-md d-block" alt=""><span class="text-muted mt-2 d-block">Dark Version</span></a></li>
                                     <li class="d-grid"><a href="javascript:void(0)" class="light-version t-light mt-4" onclick="setTheme('style')"><img src="/img/dash/demos/ltr.png" class="img-fluid rounded-md shadow-md d-block" alt=""><span class="text-muted mt-2 d-block">Light Version</span></a></li>
-                                    <li class="d-grid"><a href="../landing/index.html" target="_blank" class="mt-4"><img src="/img/dash/demos/landing.png" class="img-fluid rounded-md shadow-md d-block" alt=""><span class="text-muted mt-2 d-block">Landing Demos</span></a></li>
+                                    <li class="d-grid"><a href="#" target="_blank" class="mt-4"><img src="/img/dash/demos/landing.png" class="img-fluid rounded-md shadow-md d-block" alt=""><span class="text-muted mt-2 d-block">Landing Demos</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -487,7 +487,7 @@
                         <th class="p-3">${post?.id}</th>
                         <th class="p-3">${post?.title}</th>
                         <td class="text-end p-3">
-                        <div id="${post.id}" onclick='editarPost()' data-bs-toggle="modal" data-bs-target="#newblogadd2" class="btn btn-sm btn-primary edtbtn">editar</div>
+                        <div id="${post.id}" onclick='editarPost()' data-bs-toggle="modal" data-bs-target="#newblogadd2" class="btn btn-sm btn-primary edtbtn2">editar</div>
                         <div id="${post.id}" onclick='removerPost()' class="btn btn-sm btn-soft-primary ms-2 edtbtn">excluir</div>
                         </td>
                     </tr>`).join('')

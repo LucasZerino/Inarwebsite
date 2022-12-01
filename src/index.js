@@ -59,7 +59,7 @@ app.post('/login', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     if(req.body.sair == 'sair'){
         req.session.destroy();
-        res.redirect('login', {api: process.env.API})
+        res.redirect('login')
     }
 
     async function login(){

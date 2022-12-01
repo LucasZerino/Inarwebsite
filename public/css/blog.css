@@ -63,3 +63,16 @@ html {
     color:  yellow;
     cursor: pointer;
 }
+
+.contactsession{
+    background: white;
+}
+
+.black{
+    color: black;
+}
+
+.imageicon{
+    max-height: 70px;
+    margin-bottom: 10px;
+}
