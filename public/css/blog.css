@@ -76,3 +76,29 @@ html {
     max-height: 70px;
     margin-bottom: 10px;
 }
+
+.branco{
+    background: white !important;
+}
+
+.header2{
+    background: black !important;
+}
+
+.binput{
+    background-color: white !important;
+    font-size: 13px !important;
+    min-width: 220px !important;
+    color: #aaa !important;
+    box-sizing: border-box !important;
+    border: 1px solid #eee !important;
+    transition: all .3s ease !important;
+}
+
+.center{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 400px;
+    min-width: 300px;
+}
